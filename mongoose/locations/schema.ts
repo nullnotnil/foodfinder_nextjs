@@ -2,41 +2,52 @@ import { Schema, InferSchemaType } from "mongoose";
 
 export const LocationSchema: Schema = new Schema<LocationType>({
   address: {
-    type: "String",
+    type: String,
     required: true,
   },
   street: {
-    type: "String",
+    type: String,
     required: true,
   },
   zipcode: {
-    type: "String",
+    type: String,
     required: true,
   },
   borough: {
-    type: "String",
+    type: String,
     required: true,
   },
   cuisine: {
-    type: "String",
+    type: String,
     required: true,
   },
   grade: {
-    type: "String",
+    type: String,
     required: true,
   },
   name: {
-    type: "String",
+    type: String,
     required: true,
   },
   on_wishlist: {
-    type: ["String"],
+    type: [String],
     required: true,
   },
   location_id: {
-    type: "String",
+    type: String,
     required: true,
   },
 });
-
-export declare type LocationType = InferSchemaType<typeof LocationSchema>;
+// InferSchemaType is very buggy :(
+//export declare type LocationType = InferSchemaType<typeof LocationSchema>;
+export declare type LocationType = {
+  address: string;
+  street: string;
+  zipcode: string;
+  borough: string;
+  cuisine: string;
+  grade: string;
+  name: string;
+  on_wishlist: string[];
+  location_id: string;
+};
